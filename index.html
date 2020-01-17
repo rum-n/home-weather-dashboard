@@ -12,17 +12,53 @@
 </head>
 <body></body>
     
-    <div class="location">
-        <h2>Current Location:</h2>
-        <h1 class="location-tz"></h1>
-        <canvas class="icon" width="128" height="128"></canvas>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <div class="temperature">
+                <h1 class="heading">Current temperature in</h1>
+                <h2 class="location-tz"></h2>
+                <canvas class="icon" width="128" height="128"></canvas>
+                <h2 class="temp-degree"></h2>
+                <h4 class="temp-description"></h4>
+            </div>
+        </div>
+        <div class="col-sm">
+            <h1 class="heading">Ski Conditions (now):</h1>
+            <h3>Vitosha</h3>
+            <ul class="conditions">
+                <li>Temperature: <span class="vitTemp" id="w-info"> </span> C</li>
+                <li>Chance of rain: <span class="vitRain" id="w-info"> </span> %</li>
+                <li>Windspeed: <span class="vitWind" id="w-info"> </span> m/s</li>
+                <li>Summary: <span class="vitSum" id="w-info"> </span></li>
+            </ul>
+            <h3>Rilski Ezera</h3>
+            <ul class="conditions">
+                <li>Temperature: <span class="rilTemp" id="w-info"> </span> C</li>
+                <li>Chance of rain: <span class="rilRain" id="w-info"> </span> %</li>
+                <li>Windspeed: <span class="rilWind" id="w-info"> </span> m/s</li>
+                <li>Summary: <span class="rilSum" id="w-info"> </span></li>
+            </ul>
+            <h3>Bezbog</h3>
+            <ul class="conditions">
+                <li>Temperature:</li>
+                <li>Chance of rain:</li>
+                <li>Windspeed:</li>
+                <li>Summary:</li>
+            </ul>
+            <h3>Borovets</h3>
+            <ul class="conditions">
+                <li>Temperature:</li>
+                <li>Chance of rain:</li>
+                <li>Windspeed:</li>
+                <li>Summary:</li>
+            </ul>
+        </div>
+        <div class="col-sm">
+            <h1 class="heading">Ski Conditions (tomorrow):</h1>
+        </div>
     </div>
-
-    <div class="temperature">
-        <h2>Current temperature:</h2>
-        <h1 class="temp-degree"></h1>
-        <h1 class="temp-description"></h1>
-    </div>
+</div>
 
     <footer>
         <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>

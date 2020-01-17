@@ -1,5 +1,44 @@
 body {
-    background-color: rgb(46, 46, 90);
+    background-color: rgb(29, 29, 29);
     color: mintcream;
     font-family: 'Open Sans', sans-serif;
+}
+
+footer {
+    font-size: 0.8em;
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+}
+
+.container {
+    margin-top: 3em;
+}
+
+.heading {
+    font-size: 1.5em;
+    margin-top:0.5em;
+    margin-left: 0.5em;
+    color: palegreen;
+}
+
+.temperature {
+    border: 2px dashed rgb(129, 127, 123);
+}
+
+.temp-degree {
+    text-align: center;
+}
+
+.temp-description {
+    margin-left: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.location-tz {
+    text-align: center;
+}
+
+#w-info {
+    font-size: 1.5em;
 }
