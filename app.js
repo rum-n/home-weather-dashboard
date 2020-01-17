@@ -27,7 +27,9 @@ window.addEventListener('load', ()=> {
                 setIcons(icon, document.querySelector('.icon'));
             });
         });
-    }
+    } else {
+        prompt("You must enable your geolocation for the app to determine your local weather.")
+    };
 
     function setIcons (icon, iconID) {
         const skycons = new Skycons({ color:'white' });
