@@ -1,4 +1,6 @@
 window.addEventListener('load', ()=> {
+    // Declaring variables for the weather information that will change, 
+    // based on the data received from the Darksky API
     const tempDesc = document.querySelector('.temp-description');
     const tempDegree = document.querySelector('.temp-degree');
     const locationTz = document.querySelector('.location-tz');
@@ -24,16 +26,21 @@ window.addEventListener('load', ()=> {
     let bezbSum = document.querySelector('.bezbogSum');
 
 
-    function setIcons (icon, iconID) {
-        const skycons = new Skycons({ color:'white' });
-        const currentIcon = icon.replace(/-/g, '_').toUpperCase();
-        skycons.play();
-        return skycons.set(iconID, Skycons[currentIcon]);
-    }
+    // function setIcons (icon, iconID) {
+    //     const skycons = new Skycons({ color:'white' });
+    //     const currentIcon = icon.replace(/-/g, '_').toUpperCase();
+    //     skycons.play();
+    //     return skycons.set(iconID, Skycons[currentIcon]);
+    // }
 
+    // Weather information for the current location (now set to Sofia)
     (function currentLocation(){
         const proxy = 'https://cors-anywhere.herokuapp.com';
         const api = `${proxy}/https://api.darksky.net/forecast/7bac0ec31ccb6313d3c1db5e94c867fd/42.697708,23.321867?units=si`;
+        
+        const icon = new Skycons({ 
+            color: '#222'
+        });
 
         fetch(api)
         .then(response => {
@@ -41,14 +48,18 @@ window.addEventListener('load', ()=> {
         })
         .then(data => {
             console.log(data);
-            const {temperature, summary, icon} = data.currently;
-            tempDegree.textContent = Math.round(temperature);
+            const {temperature, summary} = data.currently;
+            tempDegree.textContent = Math.round(temperature) + '°C';
             tempDesc.textContent = summary;
-
-            setIcons(icon, document.querySelector('.icon'));
+            icon.set('icon', data.icon);
+            icon.play();
         });
+
     })();
 
+    // setIcons(icon, document.querySelector('.icon'));
+
+    // Start of the weather cards for the places where I go to ski in Bulgaria
     (function vitosha(){
         const proxy = 'https://cors-anywhere.herokuapp.com';
         const api = `${proxy}/https://api.darksky.net/forecast/7bac0ec31ccb6313d3c1db5e94c867fd/42.582537,23.292406?units=si`;
@@ -60,10 +71,10 @@ window.addEventListener('load', ()=> {
             .then(data => {
                 console.log(data);
                 const {temperature, summary, windSpeed, precipProbability} = data.currently;
-                vitoshaTemp.textContent = Math.round(temperature);
+                vitoshaTemp.textContent = Math.round(temperature) + ' °C';
                 vitoshaSum.textContent = summary;
-                vitoshaWind.textContent = windSpeed;
-                vitoshaRain.textContent = precipProbability;
+                vitoshaWind.textContent = windSpeed + ' m/s';
+                vitoshaRain.textContent = `${precipProbability * 100} %`;
              });
     })();
 
@@ -78,10 +89,10 @@ window.addEventListener('load', ()=> {
             .then(data => {
                 console.log(data);
                 const {temperature, summary, windSpeed, precipProbability} = data.currently;
-                rilaTemp.textContent = Math.round(temperature);
+                rilaTemp.textContent = Math.round(temperature) + ' °C';
                 rilaSum.textContent = summary;
-                rilaWind.textContent = windSpeed;
-                rilaRain.textContent = precipProbability;
+                rilaWind.textContent = windSpeed + ' m/s';
+                rilaRain.textContent = `${precipProbability * 100} %`;
              });
     })();
 
@@ -96,10 +107,10 @@ window.addEventListener('load', ()=> {
             .then(data => {
                 console.log(data);
                 const {temperature, summary, windSpeed, precipProbability} = data.currently;
-                boroTemp.textContent = Math.round(temperature);
+                boroTemp.textContent = Math.round(temperature) + ' °C';
                 boroSum.textContent = summary;
-                boroWind.textContent = windSpeed;
-                boroRain.textContent = precipProbability;
+                boroWind.textContent = windSpeed + ' m/s';
+                boroRain.textContent = `${precipProbability * 100} %`; 
              });
     })();
 
@@ -114,10 +125,55 @@ window.addEventListener('load', ()=> {
             .then(data => {
                 console.log(data);
                 const {temperature, summary, windSpeed, precipProbability} = data.currently;
-                bezbTemp.textContent = Math.round(temperature);
+                bezbTemp.textContent = Math.round(temperature) + ' °C';
                 bezbSum.textContent = summary;
-                bezbWind.textContent = windSpeed;
-                bezbRain.textContent = precipProbability;
+                bezbWind.textContent = windSpeed + ' m/s';
+                bezbRain.textContent = `${precipProbability * 100} %`;
              });
     })();
+
+    //Temperature color formatting based on weather conditions
+    // TO-DO: Refactor this so it follows the DRY principle!
+    
+    (function() {        
+        if (tempDegree.textContent <= 0) {
+            tempDegree.style.color = '#00CCFF'; 
+        } else {
+            tempDegree.style.color = '#FAA41A';
+        }
+    })();
+
+    (function() {        
+        if (bezbTemp.textContent <= 0) {
+            bezbTemp.style.color = '#00CCFF'; 
+        } else {
+            bezbTemp.style.color = '#FAA41A';
+        }
+    })();
+
+    (function() {        
+        if (boroTemp.textContent <= 0) {
+            boroTemp.style.color = '#00CCFF'; 
+        } else {
+            boroTemp.style.color = '#FAA41A';
+        }
+    })();
+
+    (function() {        
+        if (rilaTemp.textContent <= 0) {
+            rilaTemp.style.color = '#00CCFF'; 
+        } else {
+            rilaTemp.style.color = '#FAA41A';
+        }
+    })();
+
+    (function() {        
+        if (vitoshaTemp.textContent <= 0) {
+            vitoshaTemp.style.color = '#00CCFF'; 
+        } else {
+            vitoshaTemp.style.color = '#FAA41A';
+        }
+    })();
 });
+
+
