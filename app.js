@@ -25,22 +25,14 @@ window.addEventListener('load', ()=> {
     let bezbRain = document.querySelector('.bezbogRain');
     let bezbSum = document.querySelector('.bezbogSum');
 
-
-    // function setIcons (icon, iconID) {
-    //     const skycons = new Skycons({ color:'white' });
-    //     const currentIcon = icon.replace(/-/g, '_').toUpperCase();
-    //     skycons.play();
-    //     return skycons.set(iconID, Skycons[currentIcon]);
-    // }
-
     // Weather information for the current location (now set to Sofia)
     (function currentLocation(){
         const proxy = 'https://cors-anywhere.herokuapp.com';
         const api = `${proxy}/https://api.darksky.net/forecast/7bac0ec31ccb6313d3c1db5e94c867fd/42.697708,23.321867?units=si`;
         
-        const icon = new Skycons({ 
+        let icon = new Skycons({ 
             color: '#222'
-        });
+        })
 
         fetch(api)
         .then(response => {
@@ -48,13 +40,20 @@ window.addEventListener('load', ()=> {
         })
         .then(data => {
             console.log(data);
-            const {temperature, summary} = data.currently;
+            const {temperature, summary, icon} = data.currently;
             tempDegree.textContent = Math.round(temperature) + '°C';
             tempDesc.textContent = summary;
-            icon.set('icon', data.icon);
-            icon.play();
-        });
+            setIcons(icon, document.querySelector('.icon'));
+            // icon.set('.icon', data.icon);
+            // icon.play();
+        })
 
+        function setIcons (icon, iconID){
+            const skycons = new Skycons({ color:'black' });
+            const currentIcon = icon.replace(/-/g, '_').toUpperCase();
+            skycons.play();
+            return skycons.set(iconID, Skycons[currentIcon]);
+        }
     })();
 
     // setIcons(icon, document.querySelector('.icon'));
@@ -75,7 +74,7 @@ window.addEventListener('load', ()=> {
                 vitoshaSum.textContent = summary;
                 vitoshaWind.textContent = windSpeed + ' m/s';
                 vitoshaRain.textContent = `${precipProbability * 100} %`;
-             });
+            });
     })();
 
     (function rila(){
@@ -93,7 +92,7 @@ window.addEventListener('load', ()=> {
                 rilaSum.textContent = summary;
                 rilaWind.textContent = windSpeed + ' m/s';
                 rilaRain.textContent = `${precipProbability * 100} %`;
-             });
+            });
     })();
 
     (function borovets(){
@@ -111,7 +110,7 @@ window.addEventListener('load', ()=> {
                 boroSum.textContent = summary;
                 boroWind.textContent = windSpeed + ' m/s';
                 boroRain.textContent = `${precipProbability * 100} %`; 
-             });
+            });
     })();
 
     (function bezbog(){
@@ -129,7 +128,7 @@ window.addEventListener('load', ()=> {
                 bezbSum.textContent = summary;
                 bezbWind.textContent = windSpeed + ' m/s';
                 bezbRain.textContent = `${precipProbability * 100} %`;
-             });
+            });
     })();
 
     //Temperature color formatting based on weather conditions

@@ -14,6 +14,15 @@ footer {
     right: 1em;
 }
 
+footer span {
+    color: #fff;
+    opacity: 0.6;
+}
+
+footer a {
+    color: #00CCFF;
+}
+
 .container {
     margin-top: 3em;
 }
@@ -65,4 +74,9 @@ h4 {
 
 .conditions li {
     list-style-type: none;
+}
+
+.icon {
+    text-align: center;
+    padding-left: 4em;
 }
