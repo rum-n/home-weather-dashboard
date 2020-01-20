@@ -1,12 +1,10 @@
 window.addEventListener('load', ()=> {
-    let long;
-    let lat;
-    let tempDesc = document.querySelector('.temp-description');
-    let tempDegree = document.querySelector('.temp-degree');
-    let locationTz = document.querySelector('.location-tz');
+    const tempDesc = document.querySelector('.temp-description');
+    const tempDegree = document.querySelector('.temp-degree');
+    const locationTz = document.querySelector('.location-tz');
 
-    let vitoshaTemp = document.querySelector('.vitTemp');
-    let vitoshaWind = document.querySelector('.vitWind');
+    const vitoshaTemp = document.querySelector('.vitTemp');
+    const vitoshaWind = document.querySelector('.vitWind');
     let vitoshaRain = document.querySelector('.vitRain');
     let vitoshaSum = document.querySelector('.vitSum');
 
@@ -25,31 +23,6 @@ window.addEventListener('load', ()=> {
     let bezbRain = document.querySelector('.bezbogRain');
     let bezbSum = document.querySelector('.bezbogSum');
 
-    // if(navigator.geolocation){
-    //     navigator.geolocation.getCurrentPosition(position => {
-    //         long = position.coords.longitude;
-    //         lat = position.coords.latitude;
-
-    //         const proxy = 'https://cors-anywhere.herokuapp.com';
-    //         const api = `${proxy}/https://api.darksky.net/forecast/7bac0ec31ccb6313d3c1db5e94c867fd/${lat},${long}?units=si`;
-
-    //         fetch(api)
-    //         .then(response => {
-    //             return response.json();
-    //         })
-    //         .then(data => {
-    //             console.log(data);
-    //             const {temperature, summary, icon} = data.currently;
-    //             tempDegree.textContent = Math.round(temperature);
-    //             tempDesc.textContent = summary;
-    //             locationTz.textContent = data.timezone;
-
-    //             setIcons(icon, document.querySelector('.icon'));
-    //         });
-    //     });
-    // } else {
-    //     prompt("You must enable your geolocation for the app to determine your local weather.")
-    // };
 
     function setIcons (icon, iconID) {
         const skycons = new Skycons({ color:'white' });
@@ -58,26 +31,25 @@ window.addEventListener('load', ()=> {
         return skycons.set(iconID, Skycons[currentIcon]);
     }
 
-    function currentLocation(){
+    (function currentLocation(){
         const proxy = 'https://cors-anywhere.herokuapp.com';
         const api = `${proxy}/https://api.darksky.net/forecast/7bac0ec31ccb6313d3c1db5e94c867fd/42.697708,23.321867?units=si`;
 
-            fetch(api)
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                console.log(data);
-                const {temperature, summary, icon} = data.currently;
-                tempDegree.textContent = Math.round(temperature);
-                tempDesc.textContent = summary;
-                locationTz.textContent = data.timezone;
+        fetch(api)
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            const {temperature, summary, icon} = data.currently;
+            tempDegree.textContent = Math.round(temperature);
+            tempDesc.textContent = summary;
 
-                setIcons(icon, document.querySelector('.icon'));
-            });
-    }
+            setIcons(icon, document.querySelector('.icon'));
+        });
+    })();
 
-    function vitosha(){
+    (function vitosha(){
         const proxy = 'https://cors-anywhere.herokuapp.com';
         const api = `${proxy}/https://api.darksky.net/forecast/7bac0ec31ccb6313d3c1db5e94c867fd/42.582537,23.292406?units=si`;
         
@@ -93,9 +65,9 @@ window.addEventListener('load', ()=> {
                 vitoshaWind.textContent = windSpeed;
                 vitoshaRain.textContent = precipProbability;
              });
-    }
+    })();
 
-    function rila(){
+    (function rila(){
         const proxy = 'https://cors-anywhere.herokuapp.com';
         const api = `${proxy}/https://api.darksky.net/forecast/7bac0ec31ccb6313d3c1db5e94c867fd/42.239547,23.325955?units=si`;
         
@@ -111,9 +83,9 @@ window.addEventListener('load', ()=> {
                 rilaWind.textContent = windSpeed;
                 rilaRain.textContent = precipProbability;
              });
-    }
+    })();
 
-    function borovets(){
+    (function borovets(){
         const proxy = 'https://cors-anywhere.herokuapp.com';
         const api = `${proxy}/https://api.darksky.net/forecast/7bac0ec31ccb6313d3c1db5e94c867fd/42.263937,23.606649?units=si`;
         
@@ -129,9 +101,9 @@ window.addEventListener('load', ()=> {
                 boroWind.textContent = windSpeed;
                 boroRain.textContent = precipProbability;
              });
-    }
+    })();
 
-    function bezbog(){
+    (function bezbog(){
         const proxy = 'https://cors-anywhere.herokuapp.com';
         const api = `${proxy}/https://api.darksky.net/forecast/7bac0ec31ccb6313d3c1db5e94c867fd/41.758308,23.545210?units=si`;
         
@@ -147,11 +119,5 @@ window.addEventListener('load', ()=> {
                 bezbWind.textContent = windSpeed;
                 bezbRain.textContent = precipProbability;
              });
-    }
-
-    currentLocation();
-    vitosha();
-    rila();
-    borovets();
-    bezbog();
+    })();
 });

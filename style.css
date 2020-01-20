@@ -1,6 +1,6 @@
 body {
-    background-color: rgb(29, 29, 29);
-    color: mintcream;
+    background-color: rgb(216, 216, 216);
+    color: rgb(54, 54, 54);
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -17,9 +17,15 @@ footer {
 
 .heading {
     font-size: 1.5em;
-    margin-top:0.5em;
-    margin-left: 0.5em;
-    color: palegreen;
+    /* margin-top:0.5em; */
+    /* margin-left: 0.5em; */
+    color: rgb(135, 133, 250);
+}
+
+.temperature {
+    border-radius: 15%; 
+    text-align: left;
+    width: 300px;
 }
 
 .temp-degree {
@@ -38,4 +44,14 @@ footer {
 
 #w-info {
     font-size: 1.5em;
+}
+
+.conditions {
+    border-radius: 10%;
+    width: 250px;
+}
+
+.conditions li {
+    list-style-type: none;
+    
 }
