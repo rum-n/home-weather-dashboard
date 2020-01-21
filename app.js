@@ -3,27 +3,42 @@ window.addEventListener('load', ()=> {
     // based on the data received from the Darksky API
     const tempDesc = document.querySelector('.temp-description');
     const tempDegree = document.querySelector('.temp-degree');
-    const locationTz = document.querySelector('.location-tz');
 
     const vitoshaTemp = document.querySelector('.vitTemp');
     const vitoshaWind = document.querySelector('.vitWind');
-    let vitoshaRain = document.querySelector('.vitRain');
-    let vitoshaSum = document.querySelector('.vitSum');
+    const vitoshaSnow = document.querySelector('.vitSnow');
+    const vitoshaRain = document.querySelector('.vitRain');
+    const vitoshaSum = document.querySelector('.vitSum');
 
-    let rilaTemp = document.querySelector('.rilTemp');
-    let rilaWind = document.querySelector('.rilWind');
-    let rilaRain = document.querySelector('.rilRain');
-    let rilaSum = document.querySelector('.rilSum');
+    const rilaTemp = document.querySelector('.rilTemp');
+    const rilaWind = document.querySelector('.rilWind');
+    const rilaRain = document.querySelector('.rilRain');
+    const rilaSnow = document.querySelector('.rilSnow');
+    const rilaSum = document.querySelector('.rilSum');
 
-    let boroTemp = document.querySelector('.boroTemp');
-    let boroWind = document.querySelector('.boroWind');
-    let boroRain = document.querySelector('.boroRain');
-    let boroSum = document.querySelector('.boroSum');
+    const boroTemp = document.querySelector('.boroTemp');
+    const boroWind = document.querySelector('.boroWind');
+    const boroRain = document.querySelector('.boroRain');
+    const boroSnow = document.querySelector('.boroSnow');
+    const boroSum = document.querySelector('.boroSum');
 
-    let bezbTemp = document.querySelector('.bezbogTemp');
-    let bezbWind = document.querySelector('.bezbogWind');
-    let bezbRain = document.querySelector('.bezbogRain');
-    let bezbSum = document.querySelector('.bezbogSum');
+    const bezbTemp = document.querySelector('.bezbogTemp');
+    const bezbWind = document.querySelector('.bezbogWind');
+    const bezbRain = document.querySelector('.bezbogRain');
+    const bezbSnow = document.querySelector('.bezbogSnow');
+    const bezbSum = document.querySelector('.bezbogSum');
+
+    const pampoTemp = document.querySelector('.pampoTemp');
+    const pampoWind = document.querySelector('.pampoWind');
+    const pampoRain = document.querySelector('.pampoRain');
+    const pampoSnow = document.querySelector('.pampoSnow');
+    const pampoSum = document.querySelector('.pampoSum');
+
+    const banskoTemp = document.querySelector('.banskoTemp');
+    const banskoWind = document.querySelector('.banskoWind');
+    const banskoRain = document.querySelector('.banskoRain');
+    const banskoSnow = document.querySelector('.banskoSnow');
+    const banskoSum = document.querySelector('.banskoSum');
 
     // Weather information for the current location (now set to Sofia)
     (function currentLocation(){
@@ -39,7 +54,6 @@ window.addEventListener('load', ()=> {
             return response.json();
         })
         .then(data => {
-            console.log(data);
             const {temperature, summary, icon} = data.currently;
             tempDegree.textContent = Math.round(temperature) + '°C';
             tempDesc.textContent = summary;
@@ -68,12 +82,13 @@ window.addEventListener('load', ()=> {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
                 const {temperature, summary, windSpeed, precipProbability} = data.currently;
+                const {precipAccumulation} = data.daily.data[0];
                 vitoshaTemp.textContent = Math.round(temperature) + ' °C';
                 vitoshaSum.textContent = summary;
-                vitoshaWind.textContent = windSpeed + ' m/s';
+                vitoshaWind.textContent = Math.round(windSpeed) + ' m/s';
                 vitoshaRain.textContent = `${precipProbability * 100} %`;
+                vitoshaSnow.textContent = Math.round(precipAccumulation) + ' cm';
             });
     })();
 
@@ -86,12 +101,13 @@ window.addEventListener('load', ()=> {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
                 const {temperature, summary, windSpeed, precipProbability} = data.currently;
+                const {precipAccumulation} = data.daily.data[0];
                 rilaTemp.textContent = Math.round(temperature) + ' °C';
                 rilaSum.textContent = summary;
                 rilaWind.textContent = windSpeed + ' m/s';
                 rilaRain.textContent = `${precipProbability * 100} %`;
+                rilaSnow.textContent = Math.round(precipAccumulation) + ' cm';
             });
     })();
 
@@ -104,12 +120,13 @@ window.addEventListener('load', ()=> {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
                 const {temperature, summary, windSpeed, precipProbability} = data.currently;
+                const {precipAccumulation} = data.daily.data[0];
                 boroTemp.textContent = Math.round(temperature) + ' °C';
                 boroSum.textContent = summary;
                 boroWind.textContent = windSpeed + ' m/s';
                 boroRain.textContent = `${precipProbability * 100} %`; 
+                boroSnow.textContent = Math.round(precipAccumulation) + ' cm';
             });
     })();
 
@@ -122,12 +139,51 @@ window.addEventListener('load', ()=> {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
                 const {temperature, summary, windSpeed, precipProbability} = data.currently;
+                const {precipAccumulation} = data.daily.data[0];
                 bezbTemp.textContent = Math.round(temperature) + ' °C';
                 bezbSum.textContent = summary;
                 bezbWind.textContent = windSpeed + ' m/s';
                 bezbRain.textContent = `${precipProbability * 100} %`;
+                bezbSnow.textContent = Math.round(precipAccumulation) + ' cm';
+            });
+    })();
+
+    (function pampo(){
+        const proxy = 'https://cors-anywhere.herokuapp.com';
+        const api = `${proxy}/https://api.darksky.net/forecast/7bac0ec31ccb6313d3c1db5e94c867fd/41.645401,24.686185?units=si`;
+        
+        fetch(api)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                const {temperature, summary, windSpeed, precipProbability} = data.currently;
+                const {precipAccumulation} = data.daily.data[0];
+                pampoTemp.textContent = Math.round(temperature) + ' °C';
+                pampoSum.textContent = summary;
+                pampoWind.textContent = windSpeed + ' m/s';
+                pampoRain.textContent = `${precipProbability * 100} %`;
+                pampoSnow.textContent = Math.round(precipAccumulation) + ' cm';
+            });
+    })();
+
+    (function bansko(){
+        const proxy = 'https://cors-anywhere.herokuapp.com';
+        const api = `${proxy}/https://api.darksky.net/forecast/7bac0ec31ccb6313d3c1db5e94c867fd/41.803349,23.469249?units=si`;
+        
+        fetch(api)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                const {temperature, summary, windSpeed, precipProbability} = data.currently;
+                const {precipAccumulation} = data.daily.data[0];
+                banskoTemp.textContent = Math.round(temperature) + ' °C';
+                banskoSum.textContent = summary;
+                banskoWind.textContent = windSpeed + ' m/s';
+                banskoRain.textContent = `${precipProbability * 100} %`;
+                banskoSnow.textContent = Math.round(precipAccumulation) + ' cm';
             });
     })();
 
@@ -137,13 +193,14 @@ window.addEventListener('load', ()=> {
     (function() {        
         if (tempDegree.textContent <= 0) {
             tempDegree.style.color = '#00CCFF'; 
-        } else {
+        } 
+        else {
             tempDegree.style.color = '#FAA41A';
         }
     })();
 
     (function() {        
-        if (bezbTemp.textContent <= 0) {
+        if (bezbTemp <= 0) {
             bezbTemp.style.color = '#00CCFF'; 
         } else {
             bezbTemp.style.color = '#FAA41A';
@@ -151,7 +208,7 @@ window.addEventListener('load', ()=> {
     })();
 
     (function() {        
-        if (boroTemp.textContent <= 0) {
+        if (boroTemp <= 0) {
             boroTemp.style.color = '#00CCFF'; 
         } else {
             boroTemp.style.color = '#FAA41A';
@@ -159,7 +216,7 @@ window.addEventListener('load', ()=> {
     })();
 
     (function() {        
-        if (rilaTemp.textContent <= 0) {
+        if (rilaTemp <= 0) {
             rilaTemp.style.color = '#00CCFF'; 
         } else {
             rilaTemp.style.color = '#FAA41A';
@@ -167,10 +224,26 @@ window.addEventListener('load', ()=> {
     })();
 
     (function() {        
-        if (vitoshaTemp.textContent <= 0) {
+        if (vitoshaTemp <= 0) {
             vitoshaTemp.style.color = '#00CCFF'; 
         } else {
             vitoshaTemp.style.color = '#FAA41A';
+        }
+    })();
+
+    (function() {        
+        if (pampoTemp <= 0) {
+            pampoTemp.style.color = '#00CCFF'; 
+        } else {
+            pampoTemp.style.color = '#FAA41A';
+        }
+    })();
+
+    (function() {        
+        if (banskoTemp <= 0) {
+            banskoTemp.style.color = '#00CCFF'; 
+        } else {
+            banskoTemp.style.color = '#FAA41A';
         }
     })();
 });

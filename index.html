@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home Dashboard</title>
+    <title>Ski Conditions Dashboard</title>
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.min.js" integrity="sha256-tZNzlXmrMrO9BLT6Gv4Y0LfAN8HdbZ7+LIuNf6WkFC0=" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -14,7 +14,7 @@
     
 <div class="container">
     <div class="row">
-        <div class="col-sm">
+        <div class="col-3">
             <div class="temperature shadow p-3 mb-5 bg-white">
                 <h2 class="location-tz">Sofia</h2>
                 <canvas class="icon" width="128" height="128"></canvas>
@@ -22,12 +22,13 @@
                 <h3 class="temp-description"></h3>
             </div>
         </div>
-        <div class="col-sm">
+        <div class="col-3">
             
             <ul class="conditions shadow p-3 mb-5 bg-white">
                 <h4>Vitosha</h4>
                 <li>Temperature: <span class="vitTemp" id="w-info"> </span></li>
                 <li>Chance of rain: <span class="vitRain" id="w-info"> </span></li>
+                <li>Snow: <span class="vitSnow" id="w-info"> </span></li>
                 <li>Windspeed: <span class="vitWind" id="w-info"> </span></li>
                 <li>Summary: <span class="vitSum" id="w-info"> </span></li>
             </ul>
@@ -36,15 +37,17 @@
                 <h4>Rilski Ezera</h4>
                 <li>Temperature: <span class="rilTemp" id="w-info"> </span></li>
                 <li>Chance of rain: <span class="rilRain" id="w-info"> </span></li>
+                <li>Snow: <span class="rilSnow" id="w-info"> </span></li>
                 <li>Windspeed: <span class="rilWind" id="w-info"> </span></li>
                 <li>Summary: <span class="rilSum" id="w-info"> </span></li>
             </ul>
         </div>
-        <div class="col-sm">
+        <div class="col-3">
             <ul class="conditions shadow p-3 mb-5 bg-white">
                 <h4>Bezbog</h4>
                 <li>Temperature: <span class="bezbogTemp" id="w-info"> </span></li>
                 <li>Chance of rain: <span class="bezbogRain" id="w-info"> </span></li>
+                <li>Snow: <span class="bezbogSnow" id="w-info"> </span></li>
                 <li>Windspeed: <span class="bezbogWind" id="w-info"> </span></li>
                 <li>Summary: <span class="bezbogSum" id="w-info"> </span></li>
             </ul>
@@ -53,12 +56,29 @@
                 <h4>Borovets</h4>
                 <li>Temperature: <span class="boroTemp" id="w-info"> </span></li>
                 <li>Chance of rain: <span class="boroRain" id="w-info"> </span></li>
+                <li>Snow: <span class="boroSnow" id="w-info"> </span></li>
                 <li>Windspeed: <span class="boroWind" id="w-info"> </span></li>
                 <li>Summary: <span class="boroSum" id="w-info"> </span></li>
             </ul>
         </div>
-        <div class="col-sm">
-            
+        <div class="col-3">
+            <ul class="conditions shadow p-3 mb-5 bg-white">
+                <h4>Pamporovo</h4>
+                <li>Temperature: <span class="pampoTemp" id="w-info"> </span></li>
+                <li>Chance of rain: <span class="pampoRain" id="w-info"> </span></li>
+                <li>Snow: <span class="pampoSnow" id="w-info"> </span></li>
+                <li>Windspeed: <span class="pampoWind" id="w-info"> </span></li>
+                <li>Summary: <span class="pampoSum" id="w-info"> </span></li>
+            </ul>
+
+            <ul class="conditions shadow p-3 mb-5 bg-white">
+                <h4>Bansko</h4>
+                <li>Temperature: <span class="banskoTemp" id="w-info"> </span></li>
+                <li>Chance of rain: <span class="banskoRain" id="w-info"> </span></li>
+                <li>Snow: <span class="banskoSnow" id="w-info"> </span></li>
+                <li>Windspeed: <span class="banskoWind" id="w-info"> </span></li>
+                <li>Summary: <span class="banskoSum" id="w-info"> </span></li>
+            </ul>
         </div>
     </div>
 </div>
