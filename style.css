@@ -87,3 +87,7 @@ h4 {
     text-align: center;
     padding-left: 4em;
 }
+
+#vitoshaForecast {
+    display: none;
+}
