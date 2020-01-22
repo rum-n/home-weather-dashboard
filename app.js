@@ -2,10 +2,11 @@ window.addEventListener('load', ()=> {
     
     //Temperature color formatting based on weather conditions
     const changeColor = function(temp){
-        if (temp <= 0){
+        'use strict';
+        if (temp.textContent <= 0){
             temp.style.color = '#00CCFF';
         }
-        else {
+        else if (temp.textContent > 0){
             temp.style.color = '#FAA41A';
         }
     };
