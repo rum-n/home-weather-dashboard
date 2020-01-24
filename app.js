@@ -1,13 +1,12 @@
 window.addEventListener('load', ()=> {
     
     //Temperature color formatting based on weather conditions
-    const changeColor = function(temp){
-        'use strict';
-        if (temp.textContent <= 0){
-            temp.style.color = '#00CCFF';
+    const tempColor = function(temp){
+        if (temp <= 0){
+            return '#00CCFF';
         }
-        else if (temp.textContent > 0){
-            temp.style.color = '#FAA41A';
+        else {
+            return '#FAA41A';
         }
     };
 
@@ -30,6 +29,7 @@ window.addEventListener('load', ()=> {
             const {temperature, summary, icon} = data.currently;
             tempDegree.textContent = Math.round(temperature) + '°C';
             tempDesc.textContent = summary;
+            tempDegree.style.color = tempColor(temperature);
             setIcons(icon, document.querySelector('.icon'));
         })
 
@@ -39,8 +39,6 @@ window.addEventListener('load', ()=> {
             skycons.play();
             return skycons.set(iconID, Skycons[currentIcon]);
         }
-
-        changeColor(tempDegree);
     })();
 
     // Weather cards for the locations where I go to ski in Bulgaria
@@ -62,11 +60,11 @@ window.addEventListener('load', ()=> {
                 const {precipAccumulation} = data.daily.data[0];
                 vitoshaTemp.textContent = Math.round(temperature) + ' °C';
                 vitoshaSum.textContent = summary;
+                vitoshaTemp.style.color = tempColor(temperature);
                 vitoshaWind.textContent = Math.round(windSpeed) + ' m/s';
                 vitoshaRain.textContent = `${precipProbability * 100} %`;
                 vitoshaSnow.textContent = Math.round(precipAccumulation) + ' cm';
             });
-            changeColor(vitoshaTemp);
     })();
 
     (function rila(){
@@ -87,11 +85,11 @@ window.addEventListener('load', ()=> {
                 const {precipAccumulation} = data.daily.data[0];
                 rilaTemp.textContent = Math.round(temperature) + ' °C';
                 rilaSum.textContent = summary;
+                rilaTemp.style.color = tempColor(temperature);
                 rilaWind.textContent = Math.round(windSpeed) + ' m/s';
                 rilaRain.textContent = `${precipProbability * 100} %`;
                 rilaSnow.textContent = Math.round(precipAccumulation) + ' cm';
             });
-            changeColor(rilaTemp);
     })();
 
     (function borovets(){
@@ -112,11 +110,11 @@ window.addEventListener('load', ()=> {
                 const {precipAccumulation} = data.daily.data[0];
                 boroTemp.textContent = Math.round(temperature) + ' °C';
                 boroSum.textContent = summary;
+                boroTemp.style.color = tempColor(temperature);
                 boroWind.textContent = Math.round(windSpeed) + ' m/s';
                 boroRain.textContent = `${precipProbability * 100} %`; 
                 boroSnow.textContent = Math.round(precipAccumulation) + ' cm';
             });
-            changeColor(boroTemp);
     })();
 
     (function bezbog(){
@@ -137,11 +135,11 @@ window.addEventListener('load', ()=> {
                 const {precipAccumulation} = data.daily.data[0];
                 bezbTemp.textContent = Math.round(temperature) + ' °C';
                 bezbSum.textContent = summary;
+                bezbTemp.style.color = tempColor(temperature);
                 bezbWind.textContent = Math.round(windSpeed) + ' m/s';
                 bezbRain.textContent = `${precipProbability * 100} %`;
                 bezbSnow.textContent = Math.round(precipAccumulation) + ' cm';
             });
-            changeColor(bezbTemp);
     })();
 
     (function pampo(){
@@ -162,11 +160,11 @@ window.addEventListener('load', ()=> {
                 const {precipAccumulation} = data.daily.data[0];
                 pampoTemp.textContent = Math.round(temperature) + ' °C';
                 pampoSum.textContent = summary;
+                pampoTemp.style.color = tempColor(temperature);
                 pampoWind.textContent = Math.round(windSpeed) + ' m/s';
                 pampoRain.textContent = `${precipProbability * 100} %`;
                 pampoSnow.textContent = Math.round(precipAccumulation) + ' cm';
             });
-            changeColor(pampoTemp);
     })();
 
     (function bansko(){
@@ -187,11 +185,11 @@ window.addEventListener('load', ()=> {
                 const {precipAccumulation} = data.daily.data[0];
                 banskoTemp.textContent = Math.round(temperature) + ' °C';
                 banskoSum.textContent = summary;
+                banskoTemp.style.color = tempColor(temperature);
                 banskoWind.textContent = Math.round(windSpeed) + ' m/s';
                 banskoRain.textContent = `${precipProbability * 100} %`;
                 banskoSnow.textContent = Math.round(precipAccumulation) + ' cm';
             });
-            changeColor(banskoTemp);
     })();
 });
 
