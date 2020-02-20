@@ -62,7 +62,7 @@ window.addEventListener('load', ()=> {
                 vitoshaSum.textContent = summary;
                 vitoshaTemp.style.color = tempColor(temperature);
                 vitoshaWind.textContent = Math.round(windSpeed) + ' m/s';
-                vitoshaRain.textContent = `${precipProbability * 100} %`;
+                vitoshaRain.textContent = Math.round(precipProbability * 100) + ' %';
                 vitoshaSnow.textContent = Math.round(precipAccumulation) + ' cm';
             });
     })();
@@ -87,7 +87,7 @@ window.addEventListener('load', ()=> {
                 rilaSum.textContent = summary;
                 rilaTemp.style.color = tempColor(temperature);
                 rilaWind.textContent = Math.round(windSpeed) + ' m/s';
-                rilaRain.textContent = `${precipProbability * 100} %`;
+                rilaRain.textContent = Math.round(precipProbability * 100) + ' %';
                 rilaSnow.textContent = Math.round(precipAccumulation) + ' cm';
             });
     })();
@@ -112,7 +112,7 @@ window.addEventListener('load', ()=> {
                 boroSum.textContent = summary;
                 boroTemp.style.color = tempColor(temperature);
                 boroWind.textContent = Math.round(windSpeed) + ' m/s';
-                boroRain.textContent = `${precipProbability * 100} %`; 
+                boroRain.textContent = Math.round(precipProbability * 100) + ' %';
                 boroSnow.textContent = Math.round(precipAccumulation) + ' cm';
             });
     })();
@@ -137,7 +137,7 @@ window.addEventListener('load', ()=> {
                 bezbSum.textContent = summary;
                 bezbTemp.style.color = tempColor(temperature);
                 bezbWind.textContent = Math.round(windSpeed) + ' m/s';
-                bezbRain.textContent = `${precipProbability * 100} %`;
+                bezbRain.textContent = Math.round(precipProbability * 100) + ' %';
                 bezbSnow.textContent = Math.round(precipAccumulation) + ' cm';
             });
     })();
@@ -162,7 +162,7 @@ window.addEventListener('load', ()=> {
                 pampoSum.textContent = summary;
                 pampoTemp.style.color = tempColor(temperature);
                 pampoWind.textContent = Math.round(windSpeed) + ' m/s';
-                pampoRain.textContent = `${precipProbability * 100} %`;
+                pampoRain.textContent = Math.round(precipProbability * 100) + ' %';
                 pampoSnow.textContent = Math.round(precipAccumulation) + ' cm';
             });
     })();
@@ -187,7 +187,7 @@ window.addEventListener('load', ()=> {
                 banskoSum.textContent = summary;
                 banskoTemp.style.color = tempColor(temperature);
                 banskoWind.textContent = Math.round(windSpeed) + ' m/s';
-                banskoRain.textContent = `${precipProbability * 100} %`;
+                banskoRain.textContent = Math.round(precipProbability * 100) + ' %';
                 banskoSnow.textContent = Math.round(precipAccumulation) + ' cm';
             });
     })();
